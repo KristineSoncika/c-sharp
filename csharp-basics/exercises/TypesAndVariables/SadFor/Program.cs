@@ -8,6 +8,7 @@ namespace SadFor
         {
             Test1();
         }
+
         private static void Test1()
         {
             for (int i = 0; i < 10; i++)

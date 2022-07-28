@@ -8,11 +8,13 @@ namespace Exercise_7
         {
             CountUppercaseLetters();
         }
+
         static void CountUppercaseLetters()
         {
             Console.WriteLine("Enter a word or a sentence: ");
             string sentence = Console.ReadLine();
             int count = 0;
+
             foreach (char letter in sentence)
             {
                 if (Char.IsUpper(letter))
@@ -20,6 +22,7 @@ namespace Exercise_7
                     count++;
                 }
             }
+
             Console.WriteLine($"The number of uppercase letters in the sentence: {count}.");
         }
     }

@@ -8,6 +8,7 @@ namespace Exercise_9
         {
             Console.WriteLine(CalculateSpeed(2500, 5, 56, 23));
         }
+
         static string CalculateSpeed(double distanceInMeters, double hours, double minutes, double seconds)
         {
             double secondsToMinutes = 60;

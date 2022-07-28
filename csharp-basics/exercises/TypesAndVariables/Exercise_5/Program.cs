@@ -8,6 +8,7 @@ namespace Exercise_5
         {
             PrintCourseSchedule();
         }
+
         static void PrintCourseSchedule()
         {
             string tableHorizontalBorder = $"{("+").PadRight(61, '-')}+";
