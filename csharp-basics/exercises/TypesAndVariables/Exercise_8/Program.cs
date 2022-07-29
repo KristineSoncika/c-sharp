@@ -19,12 +19,12 @@ namespace Exercise_8
             if (years < 1 && days < 1)
             {
                 return $"{minutes} minutes is not even a one full day.";
-                
-            } else if (years >= 1)
+            }
+            else if (years >= 1)
             {
                 return $"{minutes} minutes is {years} year(s) and {days} day(s).";
-
-            } else
+            }
+            else
             {
                 return $"{minutes} minutes is {days} day(s).";
             }
