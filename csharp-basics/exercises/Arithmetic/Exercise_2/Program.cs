@@ -19,6 +19,7 @@ namespace Ex_2
             {
                 Console.WriteLine("Odd Number");
             }
+
             Console.WriteLine("bye!");
         }
     }
