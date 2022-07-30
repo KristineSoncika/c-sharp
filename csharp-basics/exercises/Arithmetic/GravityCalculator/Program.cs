@@ -5,15 +5,20 @@ namespace GravityCalculator
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
-            double gravity = -9.81;  // Earth's gravity in m/s^2
+            FreeFallDistanceCalculator();
+        }
+
+        static void FreeFallDistanceCalculator()
+        {
+            double earthGravitationalPull = -9.81;
             double initialVelocity = 0.0;
             double fallingTime = 10.0;
             double initialPosition = 0.0;
-            double finalPosition = 0.0;
-            Console.WriteLine("The object's position after " + fallingTime + " seconds is " + finalPosition + " m.");
-            Console.ReadKey();
+
+            double finalPosition = 0.5 * (earthGravitationalPull * Math.Pow(fallingTime, 2)) + (initialVelocity * fallingTime) + initialPosition;
+            Console.WriteLine($"The object's position after {fallingTime} seconds is {finalPosition}m.");
         }
     }
 }
