@@ -44,7 +44,7 @@ namespace Exercise_11
             {
                 return false;
             }
-            if (num == 2 || num == 3)
+            else if (num == 2 || num == 3)
             {
                 return true;
             }
