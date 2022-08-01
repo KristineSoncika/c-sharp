@@ -6,7 +6,7 @@ namespace Exercise_1
     {
         static void Main()
         {
-            Console.WriteLine(Check15(45, 30));
+            Console.WriteLine(Is15(45, 30));
         }
 
         static bool Is15(int num1, int num2)
