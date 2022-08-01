@@ -9,7 +9,7 @@ namespace Exercise_1
             Console.WriteLine(Check15(45, 30));
         }
 
-        static bool Check15(int num1, int num2)
+        static bool Is15(int num1, int num2)
         {
             return num1 == 15 ||
                    num2 == 15 ||
