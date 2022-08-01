@@ -32,6 +32,3 @@ namespace Exercise_5
         }
     }
 }
-
-
-
