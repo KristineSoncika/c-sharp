@@ -5,6 +5,8 @@ VisualStudioVersion = 25.0.1700.7
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LargestNumber", "LargestNumber\LargestNumber.csproj", "{5548BA7F-4E51-4FE9-8349-4A2D9964AF53}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PositiveNegativeNumber", "PositiveNegativeNumber\PositiveNegativeNumber.csproj", "{5A28CBBC-3D17-4FAE-B34F-11E52074C5CF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{5548BA7F-4E51-4FE9-8349-4A2D9964AF53}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5548BA7F-4E51-4FE9-8349-4A2D9964AF53}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5548BA7F-4E51-4FE9-8349-4A2D9964AF53}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A28CBBC-3D17-4FAE-B34F-11E52074C5CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A28CBBC-3D17-4FAE-B34F-11E52074C5CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A28CBBC-3D17-4FAE-B34F-11E52074C5CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A28CBBC-3D17-4FAE-B34F-11E52074C5CF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
