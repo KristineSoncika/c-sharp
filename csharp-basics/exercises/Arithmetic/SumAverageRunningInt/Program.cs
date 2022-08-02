@@ -4,17 +4,28 @@ namespace SumAverageRunningInt
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
-            var sum = 0;
-            int average;
+            SumAverageRunningInt();
+        }
+
+        static void SumAverageRunningInt()
+        {
             const int lowerBound = 1;
             const int upperBound = 100;
+            double sum = 0;
 
-            for (var number = lowerBound; number <= upperBound; ++number) 
+            for (var number = lowerBound; number <= upperBound; ++number)
             {
                 sum += number;
             }
+
+            double average = sum / upperBound;
+
+            Console.WriteLine(
+                $"The sum of {lowerBound} to {upperBound} is {sum}\n" +
+                $"The average is {average:F2}");
         }
     }
 }
+
