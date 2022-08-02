@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exercise_4", "Exercise_4\Ex
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exercise_5", "Exercise_5\Exercise_5.csproj", "{D7C06771-E0AD-4DBE-B32A-1AE4E130F5B4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GetTheCentury", "GetTheCentury\GetTheCentury.csproj", "{D7D84922-AD33-4767-906D-C0035DD282DC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{D7C06771-E0AD-4DBE-B32A-1AE4E130F5B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D7C06771-E0AD-4DBE-B32A-1AE4E130F5B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D7C06771-E0AD-4DBE-B32A-1AE4E130F5B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7D84922-AD33-4767-906D-C0035DD282DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7D84922-AD33-4767-906D-C0035DD282DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7D84922-AD33-4767-906D-C0035DD282DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7D84922-AD33-4767-906D-C0035DD282DC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
