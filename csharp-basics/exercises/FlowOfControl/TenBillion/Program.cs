@@ -15,6 +15,7 @@ namespace TenBillion
                 {
                     num *= -1;
                 }
+
                 if (num >= 10000000000)
                 {
                     Console.WriteLine("Number is greater or equal to 10,000,000,000!");
