@@ -132,7 +132,7 @@ namespace TicTacToe
                 Console.WriteLine("\nThe game is a tie!");
                 PlayAgain();
             }
-            else if (!(winner == ' '))
+            else if (winner != ' ')
             {
                 Console.WriteLine($"\n{winner} wins!");
                 PlayAgain();
