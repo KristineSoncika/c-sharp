@@ -41,7 +41,7 @@ namespace Exercise_8
                 word.Add("_");
             }
 
-            GuessingBoard(); 
+            GuessingBoard();
         }
 
         private static void Guess()
@@ -84,14 +84,14 @@ namespace Exercise_8
             if (guessCount == 0)
             {
                 Console.WriteLine("\nYou lost!");
-                PlayAgain();                
+                PlayAgain();
             }
 
             else if (String.Join("", word) == pickedWord)
             {
                 Console.WriteLine("\nYOU GOT IT!");
                 PlayAgain();
-            }            
+            }
         }
 
         private static void PlayAgain()
@@ -106,7 +106,7 @@ namespace Exercise_8
             choice = choice.ToUpper();
 
             if (choice == "YES")
-            {                
+            {
                 StartGame();
                 Guess();
             }
