@@ -9,7 +9,7 @@ namespace Exercise_3
             Random randomNumber = new();
             List<int> numbers = new();
 
-            for(int i = 0; i < 20; i++)
+            for (int i = 0; i < 20; i++)
             {
                 numbers.Add(randomNumber.Next(1, 101));
             }
