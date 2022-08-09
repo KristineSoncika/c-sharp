@@ -37,4 +37,3 @@ namespace Exercise_6
         }
     }
 }
-
