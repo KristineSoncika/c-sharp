@@ -31,4 +31,3 @@ namespace Exercise_1
         }
     }
 }
-
