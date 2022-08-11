@@ -32,15 +32,10 @@ namespace Exercise_7
 
             CultureInfo culture = CultureInfo.CreateSpecificCulture("en-US");
 
-            string totalDeposited = savingsAccount1.GetTotalDeposited().ToString("C2", culture);
-            string totalWithdrawn = savingsAccount1.GetTotalWithdrawn().ToString("C2", culture);
-            string interestEarned = savingsAccount1.GetInterestEarned().ToString("C2", culture);
-            string balance = savingsAccount1.GetBalance().ToString("C2", culture);
-
-            Console.WriteLine($"Total deposited: {totalDeposited}");
-            Console.WriteLine($"Total withdrawn: {totalWithdrawn}");
-            Console.WriteLine($"Interest earned: {interestEarned}");
-            Console.WriteLine($"Ending balance: {balance}");
+            Console.WriteLine($"Total deposited: {savingsAccount1.GetTotalDeposited().ToString("C2", culture)}");
+            Console.WriteLine($"Total withdrawn: {savingsAccount1.GetTotalWithdrawn().ToString("C2", culture)}");
+            Console.WriteLine($"Interest earned: {savingsAccount1.GetInterestEarned().ToString("C2", culture)}");
+            Console.WriteLine($"Ending balance: {savingsAccount1.GetBalance().ToString("C2", culture)}");
         }
     }
 }
