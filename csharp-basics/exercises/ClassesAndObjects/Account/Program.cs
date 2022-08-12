@@ -2,7 +2,7 @@
 
 namespace Account
 {
-    class VideoStoretest
+    class Program
     {
         private static void Main()
         {
