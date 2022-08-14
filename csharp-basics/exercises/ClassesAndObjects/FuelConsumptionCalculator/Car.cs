@@ -2,7 +2,7 @@
 
 namespace FuelConsumptionCalculator
 {
-    public class Car
+    class Car
     {
         private double _firstReading;
         private double _currentReading;
@@ -25,26 +25,12 @@ namespace FuelConsumptionCalculator
 
         public bool IsGasHog()
         {
-            if (ConsumptionPer100Km() > 15)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return (ConsumptionPer100Km() > 15);
         }
 
         public bool IsEconomyCar()
         {
-            if (ConsumptionPer100Km() < 5)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return (ConsumptionPer100Km() < 5) ;
         }
 
         public void FillUp(double km, double liters)
