@@ -1,35 +1,28 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EnergyDrinks
 {
     class Program
     {
-        private const int NumberedSurveyed = 12467;
-        private const double PurchasedEnergyDrinks = 0.14;
-        private const double PreferCitrusDrinks = 0.64;
+        private const int customersSurveyed = 12467;
+        private const double purchasedEnergyDrinks = 0.14;
+        private const double preferCitrusDrinks = 0.64;
 
-        private static void Main(string[] args)
+        private static void Main()
         {
-            //fixme
-            /*
-             Console.WriteLine("Total number of people surveyed " + NumberedSurveyed);
-             Console.WriteLine("Approximately " + energyDrinkers + " bought at least one energy drink");
-             Console.WriteLine(preferCitrus + " of those " + "prefer citrus flavored energy drinks.");
-             */
+            Console.WriteLine($"Total number of people surveyed: {customersSurveyed}");
+            Console.WriteLine($"Approximately {CustomersBuyingEnergyDrinks(customersSurveyed)} customers bought at least one energy drink");
+            Console.WriteLine($"Around {CustomersPreferingCitrusDrinks(customersSurveyed)} of them prefer citrus-flavored energy drinks");
         }
 
-        double CalculateEnergyDrinkers(int numberSurveyed)
+        private static double CustomersBuyingEnergyDrinks(int customersSurvayed)
         {
-            throw new Exception("Sorry, no code written :(");
+            return Math.Floor(purchasedEnergyDrinks * customersSurvayed);
         }
 
-        double CalculatePreferCitrus(int numberSurveyed)
+        private static double CustomersPreferingCitrusDrinks(int customersSurvayed)
         {
-            throw new Exception("Sorry, no code written :(");
+            return Math.Floor(preferCitrusDrinks * CustomersBuyingEnergyDrinks(customersSurvayed));
         }
     }
 }

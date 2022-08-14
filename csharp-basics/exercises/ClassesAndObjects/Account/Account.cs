@@ -1,39 +1,38 @@
-﻿namespace Account
+﻿using System;
+
+namespace Account
 {
     class Account
     {
         private string _name;
-        private double _money;
+        private decimal _balance;
 
-        public Account(string v1, double v2)
+        public Account(string name, decimal balance)
         {
-            
+            _name = name;
+            _balance = balance;
         }
 
-        public double Withdrawal(double i)
+        public void Withdrawal(decimal withdrawn)
         {
-            return i;
+            _balance -= withdrawn;
         }
 
-        public void Deposit(double i)
+        public void Deposit(decimal deposited)
         {
-            
+            _balance += deposited;
         }
 
-        public double Balance()
+        public decimal Balance()
         {
-            return _money;
+            return _balance;
         }
+
+        public string Name => _name;
 
         public override string ToString()
         {
-            return $"{_name}: {_money}";
-        }
-
-        public string Name
-        {
-            get => _name;
-            set => _name = value;
+            return $"{Name}: {_balance:F2}";
         }
     }
 }

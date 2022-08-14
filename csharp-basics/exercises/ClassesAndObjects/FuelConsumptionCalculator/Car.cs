@@ -1,33 +1,42 @@
-﻿namespace FuelConsumptionCalculator
+﻿using System;
+
+namespace FuelConsumptionCalculator
 {
-    public class Car
+    class Car
     {
-        public Car(double startOdo)
+        private double _firstReading;
+        private double _currentReading;
+        private double _litersFilled;
+
+        public Car(double firstReading)
         {
+            _firstReading = firstReading;
         }
 
-        public double CalculateConsumption()
+        public double ConsumptionPerKm()
         {
-            return 0;
+            return _litersFilled / (_currentReading - _firstReading);
         }
 
-        private double ConsumptionPer100Km()
+        public double ConsumptionPer100Km()
         {
-            return 0;
+            return ConsumptionPerKm() * 100;
         }
 
-        public bool GasHog()
+        public bool IsGasHog()
         {
-            return ConsumptionPer100Km() > 15;
+            return (ConsumptionPer100Km() > 15);
         }
 
-        public bool EconomyCar()
+        public bool IsEconomyCar()
         {
-            return ConsumptionPer100Km() < 5;
+            return (ConsumptionPer100Km() < 5) ;
         }
 
-        public void FillUp(int mileage, double liters)
+        public void FillUp(double km, double liters)
         {
+            _currentReading = km;
+            _litersFilled += liters;
         }
     }
 }
