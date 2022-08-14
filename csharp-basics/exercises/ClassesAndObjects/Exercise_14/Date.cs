@@ -3,7 +3,7 @@ using System.Globalization;
 
 namespace Exercise_14
 {
-    public class Date
+    class Date
     {
         public void WeekdayInDutch(int year, int month, int date)
         {
