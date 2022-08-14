@@ -2,7 +2,7 @@
 
 namespace Exercise_12
 {
-    public class Testpaper : ITestpaper
+    class Testpaper : ITestpaper
     {
         public string Subject { get; }
         public string[] MarkScheme { get; }
