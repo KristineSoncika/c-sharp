@@ -3,7 +3,7 @@ using System.Globalization;
 
 namespace BankAccount
 {
-    public class BankAccount
+    class BankAccount
     {
         private decimal _balance;
         private string _name;
