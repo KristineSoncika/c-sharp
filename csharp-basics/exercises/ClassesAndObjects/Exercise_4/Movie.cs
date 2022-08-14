@@ -2,29 +2,34 @@
 
 namespace Exercise_4
 {
-    public class Movie
+    class Movie
     {
-        public string Title;
-        public string Studio;
-        public string Rating;
+        private string _title;
+        private string _studio;
+        private string _rating;
 
         public Movie(string title, string studio, string rating)
         {
-            Title = title;
-            Studio = studio;
-            Rating = rating;
+            _title = title;
+            _studio = studio;
+            _rating = rating;
         }
 
         public Movie(string title, string studio)
         {
-            Title = title;
-            Studio = studio;
-            Rating = "PG";
+            _title = title;
+            _studio = studio;
+            _rating = "PG";
+        }
+
+        public string GetTitle()
+        {
+            return _title;
         }
 
         public Movie[] GetPG(Movie[] movieArray)
         {
-            Movie[] ratingPG = Array.FindAll(movieArray, movie => movie.Rating == "PG");
+            Movie[] ratingPG = Array.FindAll(movieArray, movie => movie._rating == "PG");
             return ratingPG;
         }
     }

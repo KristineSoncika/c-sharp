@@ -15,7 +15,7 @@ namespace Exercise_4
 
             foreach (Movie movie in PGMovies)
             {
-                Console.WriteLine(movie.Title);
+                Console.WriteLine(movie.GetTitle());
             }
         }
     }
