@@ -2,26 +2,26 @@
 
 namespace Exercise_13
 {
-    public class Smoothie
+    class Smoothie
     {
-        private string[] Ingredients;
-        private List<string> _ingredients = new List<string> { "Strawberries", "Banana", "Mango", "Blueberries", "Raspberries", "Apple", "Pineapple" };
+        private string[] _ingredients;
+        private List<string> _ingredientList = new List<string> { "Strawberries", "Banana", "Mango", "Blueberries", "Raspberries", "Apple", "Pineapple" };
         private List<double> _prices = new List<double> {1.50, 0.50, 2.50, 1.00, 1.00, 1.75, 3.50 };
        
         public Smoothie(string[] ingredients)
         {
-            Ingredients = ingredients;
+            _ingredients = ingredients;
         }
 
         private double CalculateCost()
         {
             double totalCost = 0;
 
-            foreach (var ingredient in Ingredients)
+            foreach (var ingredient in _ingredients)
             {
-                for (int i = 0; i < _ingredients.Count; i++)
+                for (int i = 0; i < _ingredientList.Count; i++)
                 {
-                    if (ingredient == _ingredients[i])
+                    if (ingredient == _ingredientList[i])
                     {
                         totalCost += _prices[i];
                     }
@@ -51,7 +51,7 @@ namespace Exercise_13
             string name = "";
             List<string> fruits = new();
 
-            foreach (var fruit in Ingredients)
+            foreach (var fruit in _ingredients)
             {
                 if(fruit.Contains("berries"))
                 {
