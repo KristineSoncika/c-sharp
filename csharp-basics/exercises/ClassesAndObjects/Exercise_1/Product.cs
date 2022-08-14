@@ -2,7 +2,7 @@
 
 namespace Exercise_1
 {
-    public class Product
+    class Product
     {
         private string _name;
         private double _price;
