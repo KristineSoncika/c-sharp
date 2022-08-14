@@ -2,7 +2,7 @@
 
 namespace Exercise_6
 {
-    public class Dog
+    class Dog
     {
         private string _name;
         private string _sex;
