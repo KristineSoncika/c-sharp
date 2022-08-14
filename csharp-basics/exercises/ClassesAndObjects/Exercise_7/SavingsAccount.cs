@@ -2,7 +2,7 @@
 
 namespace Exercise_7
 {
-    public class SavingsAccount
+    class SavingsAccount
     {
         private decimal _balance;
         private decimal _withdrawn;
