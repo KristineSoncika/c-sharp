@@ -2,7 +2,7 @@
 
 namespace Exercise_3
 {
-    public class Odometer
+    class Odometer
     {
         private int _km;
         private FuelGauge _fuelGauge;

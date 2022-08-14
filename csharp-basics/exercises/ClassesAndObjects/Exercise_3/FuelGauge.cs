@@ -2,7 +2,7 @@
 
 namespace Exercise_3
 {
-    public class FuelGauge
+    class FuelGauge
     {
         private int _fuel;
         public const int TankSize = 70;
