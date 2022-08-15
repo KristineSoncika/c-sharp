@@ -27,6 +27,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DecryptNumbers", "DecryptNu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NumbersFromRange", "NumbersFromRange\NumbersFromRange.csproj", "{3F7EC0CC-4829-428F-BE88-BBC3B9B04BE3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReplaceSubstring", "ReplaceSubstring\ReplaceSubstring.csproj", "{94103046-A31C-47F3-BC31-5759B1BA125E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -81,6 +83,10 @@ Global
 		{3F7EC0CC-4829-428F-BE88-BBC3B9B04BE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3F7EC0CC-4829-428F-BE88-BBC3B9B04BE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3F7EC0CC-4829-428F-BE88-BBC3B9B04BE3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94103046-A31C-47F3-BC31-5759B1BA125E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94103046-A31C-47F3-BC31-5759B1BA125E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94103046-A31C-47F3-BC31-5759B1BA125E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94103046-A31C-47F3-BC31-5759B1BA125E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
