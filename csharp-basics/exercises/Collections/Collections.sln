@@ -39,6 +39,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WordCount", "WordCount\Word
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{58CD92E3-EE99-41E4-BDB0-6667F42E50CF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlightPlanner", "FlightPlanner\FlightPlanner.csproj", "{AF2C7604-1E8F-41A2-99C3-91B0285E259D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -113,6 +115,10 @@ Global
 		{C1729189-D6F6-4720-9CDD-B8BF0CD9895B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C1729189-D6F6-4720-9CDD-B8BF0CD9895B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C1729189-D6F6-4720-9CDD-B8BF0CD9895B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF2C7604-1E8F-41A2-99C3-91B0285E259D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF2C7604-1E8F-41A2-99C3-91B0285E259D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF2C7604-1E8F-41A2-99C3-91B0285E259D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF2C7604-1E8F-41A2-99C3-91B0285E259D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
