@@ -18,7 +18,8 @@ namespace WordCount
 
         static void WordCount()
         {
-            var text = File.ReadAllText(Directory.GetCurrentDirectory() + @"/lear.txt"); // I have a Mac, therefore had to use forward slash before the file name instead of a backslash
+            string path = "./lear.txt";
+            var text = File.ReadAllText(path);
 
             int lines = text.Split("\n").Count();
             int chars = text.Count() - text.Count(i => i == '\n');
