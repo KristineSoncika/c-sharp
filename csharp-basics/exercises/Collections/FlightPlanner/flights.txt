@@ -1,4 +1,4 @@
-San Jose -> San Francisco
+﻿San Jose -> San Francisco
 San Jose -> Anchorage
 New York -> Anchorage
 New York -> San Jose
