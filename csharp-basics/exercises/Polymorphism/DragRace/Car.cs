@@ -5,8 +5,7 @@ namespace DragRace
     public class Car : ICar
     {
         public int CurrentSpeed { get; protected set; }
-        public int SpeedChange { get; protected set; }
-        public static readonly List<Car> Cars = new();
+        protected int SpeedChange;
 
         public Car(int speed)
         {
@@ -22,11 +21,6 @@ namespace DragRace
         public void SlowDown()
         {
             CurrentSpeed -= SpeedChange;
-        }
-
-        public string ShowCurrentSpeed()
-        {
-            return CurrentSpeed.ToString();
         }
 
         public virtual void StartEngine()
