@@ -5,6 +5,8 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DragRace", "DragRace\DragRace.csproj", "{031BC6CA-F701-43CE-BE8B-49324B6ABA1B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MakeSounds", "MakeSounds\MakeSounds.csproj", "{6797E2B1-53FE-4747-8150-C89C299C4815}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{031BC6CA-F701-43CE-BE8B-49324B6ABA1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{031BC6CA-F701-43CE-BE8B-49324B6ABA1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{031BC6CA-F701-43CE-BE8B-49324B6ABA1B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6797E2B1-53FE-4747-8150-C89C299C4815}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6797E2B1-53FE-4747-8150-C89C299C4815}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6797E2B1-53FE-4747-8150-C89C299C4815}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6797E2B1-53FE-4747-8150-C89C299C4815}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
