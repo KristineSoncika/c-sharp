@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Firm", "Firm\Firm.csproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdApp", "AdApp\AdApp.csproj", "{F1920185-8F1B-4DD0-931C-98904B516B84}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hierarchy", "Hierarchy\Hierarchy.csproj", "{4AE77F4D-DB98-4A05-AF44-27318A7E3BA4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{F1920185-8F1B-4DD0-931C-98904B516B84}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F1920185-8F1B-4DD0-931C-98904B516B84}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F1920185-8F1B-4DD0-931C-98904B516B84}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4AE77F4D-DB98-4A05-AF44-27318A7E3BA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4AE77F4D-DB98-4A05-AF44-27318A7E3BA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4AE77F4D-DB98-4A05-AF44-27318A7E3BA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4AE77F4D-DB98-4A05-AF44-27318A7E3BA4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
