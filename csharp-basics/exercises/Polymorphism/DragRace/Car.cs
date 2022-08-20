@@ -2,7 +2,7 @@
 
 namespace DragRace
 {
-    public class Car : ICar
+    public abstract class Car : ICar
     {
         public int CurrentSpeed { get; protected set; }
         protected int SpeedChange;
