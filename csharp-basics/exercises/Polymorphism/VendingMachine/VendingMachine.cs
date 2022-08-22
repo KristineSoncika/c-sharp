@@ -94,8 +94,8 @@ namespace VendingMachine
                 boughtProduct.Available--;
                 _products[productNumber - 1] = boughtProduct;
                 Amount = CalculateChange(boughtProduct.Price);
-                ReturnMoney();
-                Console.WriteLine("Thank you! See you next time!");
+                Console.WriteLine($"Enjoy your {boughtProduct.Name}!");
+                Console.WriteLine($"Your amount is: {Amount}");
                 return true;
             }
         }
@@ -105,11 +105,13 @@ namespace VendingMachine
             if (Amount.GetValue() == 0)
             {
                 Console.WriteLine("No change!");
+                Console.WriteLine("Thank you! See you next time!");
                 return Amount;
             }
             else
             {
                 Console.WriteLine($"Here is your change: {Amount}");
+                Console.WriteLine("Thank you! See you next time!");
                 Amount = new Money();
                 return Amount;
             }
@@ -122,9 +124,9 @@ namespace VendingMachine
                 Console.WriteLine("The product has already been added. Please update the product instead!");
                 return false;
             }
-            else if (_emptySpots - amount <= 0)
+            else if (_emptySpots - amount < 0)
             {
-                Console.WriteLine($"There are only {_emptySpots} left. Reduce the amount or try again later.");
+                Console.WriteLine($"There are {_emptySpots} spots left. Reduce the amount or try again later.");
                 return false;
             }
             else
@@ -137,9 +139,22 @@ namespace VendingMachine
 
         public bool UpdateProduct(int productNumber, string name, Money? price, int amount)
         {
-            if(productNumber < 1 && productNumber > _products.Count)
+            int amountDiff = Math.Abs(_products[productNumber - 1].Available - amount);
+
+            if (productNumber < 1 && productNumber > _products.Count)
             {
                 Console.WriteLine($"Invalid product number. Valid numbers are between 1 and {_products.Count}");
+                return false;
+            }
+            else if (_products.Select(p => p.Name).ToString() == name)
+            {
+                Console.WriteLine("Product with this name already exists.");
+                GetAllProducts();
+                return false;
+            }
+            else if (amount > _products[productNumber - 1].Available && amountDiff > EmptySpots)
+            {
+                Console.WriteLine($"There are {_emptySpots} spots left. Reduce the amount.");
                 return false;
             }
             else
@@ -149,6 +164,9 @@ namespace VendingMachine
                 productToUpdate.Price = (Money)price;
                 productToUpdate.Available = amount;
                 _products[productNumber - 1] = productToUpdate;
+
+                _emptySpots = _products[productNumber - 1].Available > amount ? _emptySpots - amountDiff : _emptySpots + amountDiff;
+
                 return true;
             }
         }
@@ -157,12 +175,41 @@ namespace VendingMachine
         {
             if (HasProducts)
             {
-                Console.WriteLine(String.Join("\n", _products));
-                
+                int num = 1;
+                foreach (var p in _products)
+                {
+                    Console.WriteLine("Our product list:\n");
+                    Console.WriteLine(String.Format("{0, 3} | {1, 9} | {2, 5} | {3, 3}\n", "N", "Name", "Price", "Amount"));
+                    Console.WriteLine(String.Format("{0, 3} | {1, 9} | {2, 5} | {3, 3}", num, p.Name, p.Price, p.Available));
+                    num++;
+                }
             }
             else
             {
                 Console.WriteLine("The machine is empty!");
+            }
+        }
+
+        public void GetAvailableProducts()
+        {           
+            if (HasProducts)
+            {
+                int num = 1;
+                Console.WriteLine("\nWe currently offer:\n");
+                Console.WriteLine(String.Format("{0, 3} | {1, 9} | {2, 5} | {3, 3}\n", "N", "Name", "Price", "Amount"));
+                foreach (var p in _products)
+                {
+                    if (p.Available > 0)
+                    {
+                        Console.WriteLine(String.Format("{0, 3} | {1, 9} | {2, 5} | {3, 3}", num, p.Name, p.Price, p.Available));
+                    }
+
+                    num++;
+                }
+            }
+            else
+            {
+                Console.WriteLine("\nThe machine is empty! Try again later.");
             }
         }
     }
