@@ -4,12 +4,16 @@ namespace Persons
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
-            /*
-             * - Create an instant of class Student and an instant of class Employee with proper values for the attributes.
-             * - Display the content of each class using Display() method.
-             */
+            Student student = new("Barry", "Blue", "7036 Mulholland Drive, Los Angeles, CA 90068, USA", 345987465, 3.2);
+            Employee employee = new("Sandy", "Mess", "101  Eagle, Fargo, ND 58102, USA", 786543098, "CTO");
+
+            student.Display();
+            student.YearEndCheck();
+            student.Display();
+
+            employee.Display();
         }
     }
 }

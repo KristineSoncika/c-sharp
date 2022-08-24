@@ -1,36 +1,27 @@
+﻿using System;
+
 namespace Firm
 {
     public abstract class StaffMember
     {
-        private string name;
-        private string address;
-        private string phone;
+        private string _name;
+        private string _address;
+        private string _phone;
 
-        //-----------------------------------------------------------------
-        // Sets up a staff member using the specified information.
-        //-----------------------------------------------------------------
-        protected StaffMember(string eName, string eAddress, string ePhone) 
+        protected StaffMember(string name, string address, string phone)
         {
-            name = eName;
-            address = eAddress;
-            phone = ePhone;
+            _name = name;
+            _address = address;
+            _phone = phone;
         }
 
-        //-----------------------------------------------------------------
-        // Returns a string including the basic employee information.
-        //-----------------------------------------------------------------
-        public override string ToString() 
+        public override string ToString()
         {
-            var result = "Name: " + name + "\n";
-            result += "Address: " + address + "\n";
-            result += "Phone: " + phone;
-            return result;
+            return  $"Name: {_name} | " +
+                    $"Address: { _address} | " +
+                    $"Phone: {_phone}";
         }
 
-        //-----------------------------------------------------------------
-        // Derived classes must define the pay method for each type of
-        // employee.
-        //-----------------------------------------------------------------
         public abstract double Pay();
     }
 }

@@ -2,11 +2,11 @@
 
 namespace MakeSounds
 {
-    public class Firework : ISound
+    public class Parrot : ISound
     {
         public void PlaySound()
         {
-            Console.WriteLine("whoosh-bang");
+            Console.WriteLine("braaaaaak..braaaaaak..");
         }
     }
 }

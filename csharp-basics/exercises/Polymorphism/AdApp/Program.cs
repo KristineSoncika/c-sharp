@@ -4,14 +4,15 @@ namespace AdApp
 {
     class Program
     {
-        private static void Main(string[] args)
+        private static void Main()
         {
-            var c = new Campaign();
-            c.AddAdvert(new Advert(1000));
-            c.AddAdvert(new Hoarding(500, 7, 200));
-            c.AddAdvert(new NewspaperAd(0, 30, 20));
-            c.AddAdvert(new TVAd(50000, 1000, 30, true));
-            Console.WriteLine(c);
+            var campaign = new Campaign("Plant a Tree!");
+            campaign.AddAdvert(new Advert(1000));
+            campaign.AddAdvert(new Hoarding(500, 7, 200, false));
+            campaign.AddAdvert(new NewspaperAd(0, 30, 20));
+            campaign.AddAdvert(new TVAd(50000, 1000, 30, true));
+            campaign.AddAdvert(new Poster(350, 3, 300, true));
+            Console.WriteLine(campaign);
         }
     }
 }
