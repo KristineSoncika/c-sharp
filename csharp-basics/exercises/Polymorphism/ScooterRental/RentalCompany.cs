@@ -1,5 +1,4 @@
 using ScooterRental.Exceptions;
-using ScooterRental.Validations;
 
 namespace ScooterRental;
 
@@ -43,7 +42,7 @@ public class RentalCompany : IRentalCompany
 
         scooter.IsRented = false;
         
-        var rentedScooter = _rentals.FirstOrDefault(s => s.Id == id && !s.RentalEnd.HasValue);
+        var rentedScooter = _rentals.FirstOrDefault(scooter => scooter.Id == id && !scooter.RentalEnd.HasValue);
         rentedScooter.RentalEnd = DateTime.UtcNow;
 
         return Calculations.CalculateRentalPrice(rentedScooter.RentalStart, (DateTime)rentedScooter.RentalEnd, rentedScooter.PricePerMinute);

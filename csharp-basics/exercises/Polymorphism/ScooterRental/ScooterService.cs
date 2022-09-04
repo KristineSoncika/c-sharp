@@ -16,7 +16,7 @@ public class ScooterService : IScooterService
     {
         Validator.ValidateId(id);
         
-        if (_scooters.Any(s => s.Id == id))
+        if (_scooters.Any(scooter => scooter.Id == id))
         {
             throw new IdMustBeUniqueException(id);
         }
@@ -31,7 +31,7 @@ public class ScooterService : IScooterService
 
     public void RemoveScooter(string id)
     {
-        var scooter = _scooters.FirstOrDefault(s => s.Id == id);
+        var scooter = _scooters.FirstOrDefault(scooter => scooter.Id == id);
         Validator.ValidateId(id);
         Validator.ValidateIfIdExists(scooter);
 
@@ -45,19 +45,19 @@ public class ScooterService : IScooterService
 
     public IList<Scooter> GetScooters()
     {
-        var availableScooters = _scooters.FindAll(s => s.IsRented == false);
+        var availableScooters = _scooters.FindAll(scooter => scooter.IsRented == false);
         
         if (availableScooters.Count < 1)
         {
             throw new NoAvailableScootersFoundException();
         }
 
-        return availableScooters;
+        return availableScooters.ToList();
     }
 
     public Scooter GetScooterById(string id)
     {
-        var scooter = _scooters.FirstOrDefault(s => s.Id == id);
+        var scooter = _scooters.FirstOrDefault(scooter => scooter.Id == id);
         Validator.ValidateId(id);
         Validator.ValidateIfIdExists(scooter);
         

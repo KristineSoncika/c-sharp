@@ -33,7 +33,7 @@ public class RentalCompanyTests
     public void StartRent_IdIsNullOrEmpty_ThrowsInvalidIdException(string id)
     {
         // Act & Assert
-        _rentalCompany.Invoking(c => c.StartRent(id))
+        _rentalCompany.Invoking(company => company.StartRent(id))
             .Should().Throw<InvalidIdException>()
             .WithMessage("Id cannot be null or empty.");
     }
@@ -42,7 +42,7 @@ public class RentalCompanyTests
     public void StartRent_ScooterDoesNotExist_ThrowsScooterDoesNotExistException()
     {
         // Act & Assert
-        _rentalCompany.Invoking(c => c.StartRent("Scooter-3"))
+        _rentalCompany.Invoking(company => company.StartRent("Scooter-3"))
             .Should().Throw<ScooterDoesNotExistException>()
             .WithMessage("Scooter does not exist.");
     }
@@ -51,7 +51,7 @@ public class RentalCompanyTests
     public void StartRent_ScooterNotAvailable_ThrowsScooterNotAvailableException()
     {
         // Arrange
-        var scooter = _scooterList.Find(s => s.Id == "Scooter-1");
+        var scooter = _scooterList.Find(scooter => scooter.Id == "Scooter-1");
         scooter.IsRented = true;
 
         // Act & Assert
@@ -64,7 +64,7 @@ public class RentalCompanyTests
     public void StartRent_ValidRent_StartsRent()
     {
         // Arrange
-        var scooter = _scooterList.Find(s => s.Id == "Scooter-1");
+        var scooter = _scooterList.Find(scooter => scooter.Id == "Scooter-1");
         
         // Act
         _rentalCompany.StartRent("Scooter-1");
@@ -80,7 +80,7 @@ public class RentalCompanyTests
     public void EndRent_IdIsNullOrEmpty_ThrowsInvalidIdException(string id)
     {
         // Act & Assert
-        _rentalCompany.Invoking(c => c.EndRent(id))
+        _rentalCompany.Invoking(company => company.EndRent(id))
             .Should().Throw<InvalidIdException>()
             .WithMessage("Id cannot be null or empty.");
     }
@@ -89,7 +89,7 @@ public class RentalCompanyTests
     public void EndRent_ScooterDoesNotExist_ThrowsScooterDoesNotExistException()
     {
         // Act & Assert
-        _rentalCompany.Invoking(c => c.EndRent("Scooter-3"))
+        _rentalCompany.Invoking(company => company.EndRent("Scooter-3"))
             .Should().Throw<ScooterDoesNotExistException>()
             .WithMessage("Scooter does not exist.");
     }
@@ -98,11 +98,11 @@ public class RentalCompanyTests
     public void EndRent_ScooterNotRentedOut_ThrowsScooterNotRentedOutException()
     {
         // Arrange
-        var scooter = _scooterList.Find(s => s.Id == "Scooter-1");
+        var scooter = _scooterList.Find(scooter => scooter.Id == "Scooter-1");
         scooter.IsRented = false;
         
         // Act & Assert
-        _rentalCompany.Invoking(c => c.EndRent("Scooter-1"))
+        _rentalCompany.Invoking(company => company.EndRent("Scooter-1"))
             .Should().Throw<ScooterNotRentedOutException>()
             .WithMessage($"This scooter is not rented out: Scooter-1");
     }
@@ -111,7 +111,7 @@ public class RentalCompanyTests
     public void EndRent_ValidRent_EndsRent()
     {
         // Arrange
-        var scooter = _scooterList.FirstOrDefault(s => s.Id == "Scooter-1");
+        var scooter = _scooterList.FirstOrDefault(scooter => scooter.Id == "Scooter-1");
         scooter.IsRented = true;
         var rentedScooter = new RentedScooter(scooter.Id, scooter.PricePerMinute, DateTime.UtcNow.AddMinutes(-12));
         _rentalsList.Add(rentedScooter);
@@ -199,7 +199,7 @@ public class RentalCompanyTests
         RentalsMockData();
         
         // Act & Assert
-        _rentalCompany.Invoking(c => c.CalculateIncome(2019, false))
+        _rentalCompany.Invoking(company => company.CalculateIncome(2019, false))
             .Should().Throw<NoRentalsInGivenYearException>()
             .WithMessage("There are no rentals in 2019");
     }
