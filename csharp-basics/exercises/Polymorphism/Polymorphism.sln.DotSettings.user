@@ -1,6 +1,6 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
 	<s:String x:Key="/Default/Environment/Highlighting/HighlightingSourceSnapshotLocation/@EntryValue">/Users/kristine/Library/Caches/JetBrains/Rider2022.2/resharper-host/temp/Rider/vAny/CoverageData/_Polymorphism.1363409892/Snapshot/snapshot.utdcvr</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=53d81354_002D3745_002D4bb1_002Db751_002Db8dcc0d9fa1e/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="ScooterTests" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=53d81354_002D3745_002D4bb1_002Db751_002Db8dcc0d9fa1e/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="ScooterTests" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
   &lt;TestAncestor&gt;
     &lt;TestId&gt;xUnit::891559E1-42C0-47BC-B710-7B51528B4128::net6.0::ScooterRental.Tests.ScooterTests&lt;/TestId&gt;
     &lt;TestId&gt;xUnit::891559E1-42C0-47BC-B710-7B51528B4128::net6.0::ScooterRental.Tests.ScooterServiceTests.AddScooter_ValidScooter_AddsScooter&lt;/TestId&gt;

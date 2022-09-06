@@ -1,46 +1,49 @@
-﻿using System;
+﻿using Hierarchy.Validations;
 
-namespace Hierarchy
+namespace Hierarchy;
+
+public abstract class Animal
 {
-    public abstract class Animal
+    private readonly string _animalType;
+    private readonly string _animalName;
+    private readonly double _animalWeight;
+    private int _foodEaten;
+
+    protected Animal(string type, string name, double weight)
     {
-        protected string _animalType;
-        protected string _animalName;
-        protected double _animalWeight;
-        protected int _foodEaten;
+        Validator.ValidateType(type);
+        Validator.ValidateName(name);
+        Validator.ValidateWeight(weight);
+        
+        _animalType = type;
+        _animalName = name;
+        _animalWeight = weight;
+    }
 
-        public Animal(string type, string name, double weight)
-        {
-            _animalType = type;
-            _animalName = name;
-            _animalWeight = weight;
-        }
+    public string GetAnimalType()
+    {
+        return _animalType;
+    }
 
-        public string GetAnimalType()
-        {
-            return _animalType;
-        }
+    public string GetAnimalName()
+    {
+        return _animalName;
+    }
 
-        public string GetAnimalName()
-        {
-            return _animalName;
-        }
+    public double GetAnimalWeight()
+    {
+        return _animalWeight;
+    }
 
-        public double GetAnimalWeight()
-        {
-            return _animalWeight;
-        }
+    public int GetFoodEaten()
+    {
+        return _foodEaten;
+    }
 
-        public int GetFoodEaten()
-        {
-            return _foodEaten;
-        }
+    public abstract string MakeSound();
 
-        public abstract void MakeSound();
-
-        public virtual void Eat(Food food)
-        {
-            _foodEaten += food.GetQuantity();
-        }
+    public virtual void Eat(Food food)
+    {
+        _foodEaten += food.GetQuantity();
     }
 }

@@ -1,28 +1,26 @@
-﻿using System;
+﻿using Hierarchy.Exceptions;
 
-namespace Hierarchy
+namespace Hierarchy;
+
+public class Tiger : Feline
 {
-    public class Tiger : Feline
+    private const string Sound = "Grrrrr..!";
+        
+    public Tiger(string type, string name, double weight, string region) : 
+        base(type, name, weight, region) { }
+
+    public override string MakeSound()
     {
-        public Tiger(string type, string name, double weight, string region) : base(type, type, weight, region)
+        return Sound;
+    }
+
+    public override void Eat(Food food)
+    {
+        if (food.ToString() == "Vegetable")
         {
+            throw new InvalidFoodException(GetAnimalType());
         }
 
-        public override void MakeSound()
-        {
-            Console.WriteLine("\nGrrrrr..!");
-        }
-
-        public override void Eat(Food food)
-        {
-            if (food.ToString() == "Vegetable")
-            {
-                Console.WriteLine($"\n{GetAnimalType()} does not eat that type of food!");
-            }
-            else
-            {
-                base.Eat(food);
-            }
-        }
+        base.Eat(food);
     }
 }

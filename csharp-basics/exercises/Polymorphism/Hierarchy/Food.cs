@@ -1,24 +1,21 @@
-﻿using System;
+﻿namespace Hierarchy;
 
-namespace Hierarchy
+public abstract class Food
 {
-    public abstract class Food
+    private readonly int _quantity;
+
+    protected Food(int quantity)
     {
-        protected int _quantity;
+        _quantity = quantity;
+    }
 
-        public Food(int quantity)
-        {
-            _quantity = quantity;
-        }
+    public int GetQuantity()
+    {
+        return _quantity;
+    }
 
-        public int GetQuantity()
-        {
-            return _quantity;
-        }
-
-        public override string ToString()
-        {
-            return GetType().Name;
-        }
+    public override string ToString()
+    {
+        return GetType().Name;
     }
 }
