@@ -1,216 +1,120 @@
-﻿using System;
-using System.Linq;
+﻿using VendingMachine.Exceptions;
+using VendingMachine.Interfaces;
+using VendingMachine.Validations;
 
-namespace VendingMachine
+namespace VendingMachine;
+
+public class VendingMachine : IVendingMachine
 {
-    public class VendingMachine : IVendingMachine
+    private readonly List<Product> _products;
+    private readonly List<string> _validCoins;
+    private int _emptySpots;
+    public string Manufacturer { get; }
+    public bool HasProducts => _products.Count > 0;
+    public Money Amount { get; private set; }
+    public Product[] Products { get => _products.ToArray(); set { } }
+    
+    public VendingMachine(string manufacturer, int capacity, List<string> validCoins)
     {
-        private string _manufacturer;
-        private int _capacity;
-        private int _emptySpots;
-        private List<string> _validCoins = new() { "0.10", "0.20", "0.50", "1.00", "2.00" };
+        Validator.ValidateName(manufacturer);
+        Validator.ValidateAmount(capacity);
+        Validator.ValidateCoinsList(validCoins);
+        
+        Manufacturer = manufacturer;
+        _validCoins = validCoins;
+        _products = new List<Product>();
+        _emptySpots = capacity;
+    }
 
-        private List<Product> _products { get; set; }
-        public Product[] Products
+    private Money SumInsertedCoins(Money amount)
+    {
+        var euros = Amount.Euros + amount.Euros;
+        var cents = Amount.Cents + amount.Cents;
+        
+        if (cents >= 100)
         {
-            get { return _products.ToArray(); }
-            set { }
+            euros++;
+            cents %= 100;
         }
 
-        public string Manufacturer => _manufacturer;
-        public string ValidCoins => String.Join(" | ", _validCoins);
-        public int Capacity => _capacity;
-        public int EmptySpots => _emptySpots;
-        public bool HasProducts => _products.Count > 0;
-        public Money Amount { get; private set; }
+        return new Money(euros, cents);
+    }
 
-        public VendingMachine(string manufacturer, int capacity)
+    public Money InsertCoin(Money amount)
+    {
+        if (!_validCoins.Contains(amount.ToString()))
         {
-            _manufacturer = manufacturer;
-            _products = new();
-            _capacity = capacity;
-            _emptySpots = capacity;
+            throw new InvalidCoinException(amount.ToString());
         }
 
-        private Money SumInsertedCoins(Money amount)
+        Amount = SumInsertedCoins(amount);
+        return Amount;
+    }
+
+    public Money ReturnMoney()
+    {
+        var change = Amount;
+        
+        if (change.GetValue() == 0)
         {
-            var euros = Amount.Euros + amount.Euros;
-            var cents = Amount.Cents + amount.Cents;
-            if (cents >= 100)
-            {
-                euros++;
-                cents = cents % 100;
-            }
-
-            return new Money(euros, cents);
+            throw new NoChangeException();
         }
+        
+        Amount = new Money();
+        return change;
+    }
 
-        private Money CalculateChange(Money amount)
+    public bool AddProduct(string name, Money price, int amount)
+    {
+        Validator.ValidateName(name);
+        Validator.ValidateAmount(amount);
+        
+        if(_products.Exists(product => product.Name == name))
         {
-            var euros = Amount.Euros - amount.Euros;
-            var cents = Amount.Cents - amount.Cents;
-            if (cents < 0)
-            {
-                euros--;
-                cents = 100 + cents;
-            }
-
-            return new Money(euros, cents);
-        }
-
-        public Money InsertCoin(Money amount)
+            throw new ProductAlreadyAddedException(name);
+        } 
+        
+        if (_emptySpots - amount < 0)
         {
-            if (!_validCoins.Contains(amount.ToString()))
-            {
-                Console.WriteLine($"Accepted coins are: {ValidCoins}. Try again!");
-                return Amount;
-            }
-
-            Amount = SumInsertedCoins(amount);
-            return Amount;
+            throw new NotEnoughEmptySpotsException(_emptySpots);
         }
 
-        public bool BuyProduct(int productNumber)
+        _products.Add(new Product(name, price, amount));
+        _emptySpots -= amount;
+        return true;
+    }
+
+    public bool UpdateProduct(int productNumber, string name, Money? price, int amount)
+    {
+        if (!HasProducts)
         {
-            if (productNumber < 1 || productNumber > _products.Count)
-            {
-                Console.WriteLine($"Invalid product number. Valid numbers are between 1 and {_products.Count}");
-                return false;
-            }
-            else if (_products[productNumber - 1].Available < 1)
-            {
-                Console.WriteLine("This product is not available. Try another one.");
-                return false;
-            }
-            else if (_products[productNumber - 1].Price.GetValue() > Amount.GetValue())
-            {
-                Console.WriteLine("Your funds are not sufficient. Please insert more coins.");
-                return false;
-            }
-            else
-            {
-                _emptySpots++;
-                Product boughtProduct = _products[productNumber - 1];
-                boughtProduct.Available--;
-                _products[productNumber - 1] = boughtProduct;
-                Amount = CalculateChange(boughtProduct.Price);
-                Console.WriteLine($"Enjoy your {boughtProduct.Name}!");
-                Console.WriteLine($"Your amount is: {Amount}");
-                return true;
-            }
+            throw new MachineIsEmptyException();
         }
+        
+        Validator.ValidateName(name);
+        Validator.ValidateAmount(amount);
+        Validator.ValidateProductNumber(productNumber, _products);
 
-        public Money ReturnMoney()
+        if (_products.Exists(product => product.Name == name))
         {
-            if (Amount.GetValue() == 0)
-            {
-                Console.WriteLine("No change!");
-                Console.WriteLine("Thank you! See you next time!");
-                return Amount;
-            }
-            else
-            {
-                Console.WriteLine($"Here is your change: {Amount}");
-                Console.WriteLine("Thank you! See you next time!");
-                Amount = new Money();
-                return Amount;
-            }
+            throw new ProductWithThisNameAlreadyExistsException(name);
         }
-
-        public bool AddProduct(string name, Money price, int amount)
+        
+        var amountDiff = Math.Abs(_products[productNumber - 1].Available - amount);
+        
+        if (amount > _products[productNumber - 1].Available && amountDiff > _emptySpots)
         {
-            if(_products.Exists(p => p.Name == name))
-            {
-                Console.WriteLine("The product has already been added. Please update the product instead!");
-                return false;
-            }
-            else if (_emptySpots - amount < 0)
-            {
-                Console.WriteLine($"There are {_emptySpots} spots left. Reduce the amount or try again later.");
-                return false;
-            }
-            else
-            {
-                _products.Add(new Product(name, price, amount));
-                _emptySpots -= amount;
-                return true;
-            }
+            throw new NotEnoughEmptySpotsException(_emptySpots);
         }
 
-        public bool UpdateProduct(int productNumber, string name, Money? price, int amount)
-        {
-            int amountDiff = Math.Abs(_products[productNumber - 1].Available - amount);
+        var productToUpdate = _products[productNumber - 1];
+        productToUpdate.Name = name;
+        productToUpdate.Price = (Money)price;
+        productToUpdate.Available = amount;
+        _products[productNumber - 1] = productToUpdate;
 
-            if (productNumber < 1 && productNumber > _products.Count)
-            {
-                Console.WriteLine($"Invalid product number. Valid numbers are between 1 and {_products.Count}");
-                return false;
-            }
-            else if (_products.Select(p => p.Name).ToString() == name)
-            {
-                Console.WriteLine("Product with this name already exists.");
-                GetAllProducts();
-                return false;
-            }
-            else if (amount > _products[productNumber - 1].Available && amountDiff > EmptySpots)
-            {
-                Console.WriteLine($"There are {_emptySpots} spots left. Reduce the amount.");
-                return false;
-            }
-            else
-            {
-                Product productToUpdate = _products[productNumber - 1];
-                productToUpdate.Name = name;
-                productToUpdate.Price = (Money)price;
-                productToUpdate.Available = amount;
-                _products[productNumber - 1] = productToUpdate;
+        _emptySpots = _products[productNumber - 1].Available > amount ? _emptySpots - amountDiff : _emptySpots + amountDiff;
 
-                _emptySpots = _products[productNumber - 1].Available > amount ? _emptySpots - amountDiff : _emptySpots + amountDiff;
-
-                return true;
-            }
-        }
-
-        public void GetAllProducts()
-        {
-            if (HasProducts)
-            {
-                int num = 1;
-                foreach (var p in _products)
-                {
-                    Console.WriteLine("Our product list:\n");
-                    Console.WriteLine(String.Format("{0, 3} | {1, 9} | {2, 5} | {3, 3}\n", "N", "Name", "Price", "Amount"));
-                    Console.WriteLine(String.Format("{0, 3} | {1, 9} | {2, 5} | {3, 3}", num, p.Name, p.Price, p.Available));
-                    num++;
-                }
-            }
-            else
-            {
-                Console.WriteLine("The machine is empty!");
-            }
-        }
-
-        public void GetAvailableProducts()
-        {           
-            if (HasProducts)
-            {
-                int num = 1;
-                Console.WriteLine("\nWe currently offer:\n");
-                Console.WriteLine(String.Format("{0, 3} | {1, 9} | {2, 5} | {3, 3}\n", "N", "Name", "Price", "Amount"));
-                foreach (var p in _products)
-                {
-                    if (p.Available > 0)
-                    {
-                        Console.WriteLine(String.Format("{0, 3} | {1, 9} | {2, 5} | {3, 3}", num, p.Name, p.Price, p.Available));
-                    }
-
-                    num++;
-                }
-            }
-            else
-            {
-                Console.WriteLine("\nThe machine is empty! Try again later.");
-            }
-        }
+        return true;
     }
 }

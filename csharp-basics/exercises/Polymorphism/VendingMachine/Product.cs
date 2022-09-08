@@ -1,27 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using VendingMachine.Validations;
 
-namespace VendingMachine
+namespace VendingMachine;
+
+public struct Product
 {
-    public struct Product
+    ///<summary>Gets or sets the available amount of product.</summary>
+    public int Available { get; set; }
+    ///<summary>Gets or sets the product price.</summary>
+    public Money Price { get; set; }
+    ///<summary>Gets or sets the product name.</summary>
+    public string Name { get; set; }
+
+    public Product(string name, Money price, int count)
     {
-        public int Available { get; set; }
-        public Money Price { get; set; }
-        public string Name { get; set; }
+        Validator.ValidateName(name);
+        Validator.ValidateAmount(count);
 
-        public Product(string name, Money price, int count)
-        {
-            Name = name;
-            Price = price;
-            Available = count;
-        }
+        Name = name;
+        Price = price;
+        Available = count;
+    }
 
-        public override string ToString()
-        {
-            return $"Name: {Name} | Price: {Price} | Amount available: {Available}";
-        }
+    public override string ToString()
+    {
+        return $"Name: {Name} | Price: {Price} | Amount available: {Available}";
     }
 }

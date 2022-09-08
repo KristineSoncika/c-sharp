@@ -25,6 +25,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hierarchy.Tests", "Hierarch
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HierarchyUI", "HierarchyUI\HierarchyUI.csproj", "{AE2DC7D4-018A-49B5-82CC-0F83FA1EEC4F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VendingMachineUI", "VendingMachineUI\VendingMachineUI.csproj", "{66C1BD91-D40C-48F7-83C7-D442E67D0B45}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VendingMachine.Tests", "VendingMachine.Tests\VendingMachine.Tests.csproj", "{63F89CC8-694D-48A5-9594-1B5FE4606498}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,6 +79,14 @@ Global
 		{AE2DC7D4-018A-49B5-82CC-0F83FA1EEC4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AE2DC7D4-018A-49B5-82CC-0F83FA1EEC4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AE2DC7D4-018A-49B5-82CC-0F83FA1EEC4F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66C1BD91-D40C-48F7-83C7-D442E67D0B45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66C1BD91-D40C-48F7-83C7-D442E67D0B45}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66C1BD91-D40C-48F7-83C7-D442E67D0B45}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66C1BD91-D40C-48F7-83C7-D442E67D0B45}.Release|Any CPU.Build.0 = Release|Any CPU
+		{63F89CC8-694D-48A5-9594-1B5FE4606498}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63F89CC8-694D-48A5-9594-1B5FE4606498}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63F89CC8-694D-48A5-9594-1B5FE4606498}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63F89CC8-694D-48A5-9594-1B5FE4606498}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
