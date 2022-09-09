@@ -1,14 +1,20 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
 	<s:String x:Key="/Default/Environment/Highlighting/HighlightingSourceSnapshotLocation/@EntryValue">/Users/kristine/Library/Caches/JetBrains/Rider2022.2/resharper-host/temp/Rider/vAny/CoverageData/_Polymorphism.1363409892/Snapshot/snapshot.utdcvr</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=53d81354_002D3745_002D4bb1_002Db751_002Db8dcc0d9fa1e/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="ScooterTests" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
-  &lt;TestAncestor&gt;
-    &lt;TestId&gt;xUnit::63F89CC8-694D-48A5-9594-1B5FE4606498::net6.0::VendingMachine.Tests.MoneyTests&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::63F89CC8-694D-48A5-9594-1B5FE4606498::net6.0::VendingMachine.Tests.ProductTests.CreateProduct_ValidProduct_CreatesProduct&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::63F89CC8-694D-48A5-9594-1B5FE4606498::net6.0::VendingMachine.Tests.ProductTests.CreateProduct_NameIsNullOrEmpty_ThrowsInvalidNameException&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::63F89CC8-694D-48A5-9594-1B5FE4606498::net6.0::VendingMachine.Tests.ProductTests.CreateProduct_AmountIsNegativeOrZero_ShouldThrowInvalidAmountException&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::63F89CC8-694D-48A5-9594-1B5FE4606498::net6.0::VendingMachine.Tests.ProductTests&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::63F89CC8-694D-48A5-9594-1B5FE4606498::net6.0::VendingMachine.Tests.VendingMachineTests&lt;/TestId&gt;
-  &lt;/TestAncestor&gt;
+  &lt;And&gt;
+    &lt;TestAncestor&gt;
+      &lt;TestId&gt;xUnit::63F89CC8-694D-48A5-9594-1B5FE4606498::net6.0::VendingMachine.Tests.MoneyTests&lt;/TestId&gt;
+      &lt;TestId&gt;xUnit::63F89CC8-694D-48A5-9594-1B5FE4606498::net6.0::VendingMachine.Tests.ProductTests.CreateProduct_ValidProduct_CreatesProduct&lt;/TestId&gt;
+      &lt;TestId&gt;xUnit::63F89CC8-694D-48A5-9594-1B5FE4606498::net6.0::VendingMachine.Tests.ProductTests.CreateProduct_NameIsNullOrEmpty_ThrowsInvalidNameException&lt;/TestId&gt;
+      &lt;TestId&gt;xUnit::63F89CC8-694D-48A5-9594-1B5FE4606498::net6.0::VendingMachine.Tests.ProductTests.CreateProduct_AmountIsNegativeOrZero_ShouldThrowInvalidAmountException&lt;/TestId&gt;
+      &lt;TestId&gt;xUnit::63F89CC8-694D-48A5-9594-1B5FE4606498::net6.0::VendingMachine.Tests.ProductTests&lt;/TestId&gt;
+      &lt;TestId&gt;xUnit::63F89CC8-694D-48A5-9594-1B5FE4606498::net6.0::VendingMachine.Tests.VendingMachineTests&lt;/TestId&gt;
+      &lt;TestId&gt;xUnit::1F7EF689-2B9C-461B-9786-0D45978D7451::net6.0::Hierarchy.Tests.AnimalDataTests&lt;/TestId&gt;
+    &lt;/TestAncestor&gt;
+    &lt;Not&gt;
+      &lt;Project Location="/Users/kristine/Projects/codelex/c-sharp-syllabus/csharp-basics/exercises/Polymorphism/VendingMachine.Tests" Presentation="&amp;lt;VendingMachine.Tests&amp;gt;" /&gt;
+    &lt;/Not&gt;
+  &lt;/And&gt;
 &lt;/SessionState&gt;</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=8f6cb43b_002Dbd5c_002D4872_002Dbafd_002Dc7329a2bac23/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="All tests from Solution" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
   &lt;Not&gt;
