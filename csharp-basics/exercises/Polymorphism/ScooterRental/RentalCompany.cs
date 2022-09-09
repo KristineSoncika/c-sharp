@@ -6,18 +6,18 @@ namespace ScooterRental;
 
 public class RentalCompany : IRentalCompany
 {
-    private readonly ScooterService _scooterService;
+    private readonly IScooterService _scooterService;
     private readonly List<RentedScooter> _rentals;
-    private readonly Calculations _calculations;
+    private readonly ICalculations _calculations;
 
-    public RentalCompany(string name, ScooterService scooterService, List<RentedScooter> rentedScooters)
+    public RentalCompany(string name, IScooterService scooterService, List<RentedScooter> rentedScooters, ICalculations calculations)
     {
         Validator.ValidateName(name);
         
         Name = name;
         _scooterService = scooterService;
         _rentals = rentedScooters;
-        _calculations = new Calculations();
+        _calculations = calculations;
     }
     
     public string Name { get; }

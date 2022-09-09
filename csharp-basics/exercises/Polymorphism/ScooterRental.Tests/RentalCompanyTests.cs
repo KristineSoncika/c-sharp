@@ -18,7 +18,7 @@ public class RentalCompanyTests
             new("Scooter-2", 0.20m)
         };
         _rentalsList = new List<RentedScooter>();
-        _rentalCompany = new RentalCompany("BlueScooters", new ScooterService(_scooterList), _rentalsList);
+        _rentalCompany = new RentalCompany("BlueScooters", new ScooterService(_scooterList), _rentalsList, new Calculations());
     }
 
     [Fact]
@@ -35,7 +35,7 @@ public class RentalCompanyTests
     public void CreateCompany_InvalidName_ThrowsInvalidNameException(string name)
     {
         // Act & Assert
-        FluentActions.Invoking(() => new RentalCompany(name, new ScooterService(_scooterList), _rentalsList))
+        FluentActions.Invoking(() => new RentalCompany(name, new ScooterService(_scooterList), _rentalsList, new Calculations()))
             .Should().Throw<InvalidNameException>()
             .WithMessage("Name cannot be null or empty.");
     }
@@ -60,6 +60,21 @@ public class RentalCompanyTests
             .Should().Throw<ScooterDoesNotExistException>()
             .WithMessage("Scooter does not exist.");
     }
+    
+    [Fact]
+    public void StartRent_NoAvailableScooters_ThrowsNoAvailableScootersFoundException()
+    {
+        // Arrange
+        foreach (var scooter in _scooterList)
+        {
+            scooter.IsRented = true;
+        }
+        
+        // Act & Assert
+        _rentalCompany.Invoking(company => company.StartRent("Scooter-2"))
+            .Should().Throw<NoAvailableScootersFoundException>()
+            .WithMessage("There are no scooters currently available.");
+    }
 
     [Fact]
     public void StartRent_ScooterNotAvailable_ThrowsScooterNotAvailableException()
@@ -69,9 +84,9 @@ public class RentalCompanyTests
         scooter.IsRented = true;
 
         // Act & Assert
-        _rentalCompany.Invoking(c => c.StartRent("Scooter-1"))
+        _rentalCompany.Invoking(company => company.StartRent("Scooter-1"))
             .Should().Throw<ScooterNotAvailableException>()
-            .WithMessage($"This scooter is rented out: Scooter-1");
+            .WithMessage("This scooter is rented out: Scooter-1");
     }
 
     [Fact]
@@ -79,13 +94,14 @@ public class RentalCompanyTests
     {
         // Arrange
         var scooter = _scooterList.Find(scooter => scooter.Id == "Scooter-1");
-        
+
         // Act
         _rentalCompany.StartRent("Scooter-1");
         
         // Assert
         scooter.IsRented.Should().BeTrue();
         _rentalsList.Should().HaveCount(1);
+        _rentalsList.Should().Contain(rentedScooter => rentedScooter.Id == "Scooter-1");
     }
     
     [Theory]
