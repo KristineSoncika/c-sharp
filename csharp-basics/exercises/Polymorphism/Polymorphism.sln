@@ -29,6 +29,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VendingMachineUI", "Vending
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VendingMachine.Tests", "VendingMachine.Tests\VendingMachine.Tests.csproj", "{63F89CC8-694D-48A5-9594-1B5FE4606498}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScooterRental.MoqTests", "ScooterRental.MoqTests\ScooterRental.MoqTests.csproj", "{5BC7DA70-FFB1-4972-9F65-6ECA8463ABC0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -87,6 +89,10 @@ Global
 		{63F89CC8-694D-48A5-9594-1B5FE4606498}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{63F89CC8-694D-48A5-9594-1B5FE4606498}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{63F89CC8-694D-48A5-9594-1B5FE4606498}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5BC7DA70-FFB1-4972-9F65-6ECA8463ABC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5BC7DA70-FFB1-4972-9F65-6ECA8463ABC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5BC7DA70-FFB1-4972-9F65-6ECA8463ABC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5BC7DA70-FFB1-4972-9F65-6ECA8463ABC0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
