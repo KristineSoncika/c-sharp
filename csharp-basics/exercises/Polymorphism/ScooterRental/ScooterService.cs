@@ -1,4 +1,5 @@
 using ScooterRental.Exceptions;
+using ScooterRental.Interfaces;
 using ScooterRental.Validations;
 
 namespace ScooterRental;
@@ -15,15 +16,11 @@ public class ScooterService : IScooterService
     public void AddScooter(string id, decimal pricePerMinute)
     {
         Validator.ValidateId(id);
+        Validator.ValidatePricePerMinute(pricePerMinute);
         
         if (_scooters.Any(scooter => scooter.Id == id))
         {
             throw new IdMustBeUniqueException(id);
-        }
-
-        if (pricePerMinute <= 0)
-        {
-            throw new InvalidPriceException(pricePerMinute);
         }
 
         _scooters.Add(new Scooter(id, pricePerMinute));

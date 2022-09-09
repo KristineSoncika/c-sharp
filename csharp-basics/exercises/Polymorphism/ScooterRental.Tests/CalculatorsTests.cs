@@ -5,6 +5,8 @@ namespace ScooterRental.Tests;
 
 public class CalculatorsTests
 {
+    private readonly Calculations _calculations = new();
+    
     public static IEnumerable<object[]> RentalData =>
         new List<object[]>
         {
@@ -26,7 +28,7 @@ public class CalculatorsTests
     public void CalculateRentalPrice_ReturnsScooterRentalPrice(DateTime start, DateTime end, decimal pricePerMinute, decimal expected)
     {
         // Act & Assert
-       Calculations.CalculateRentalPrice(start, end, pricePerMinute).Should().Be(expected);
+       _calculations.CalculateRentalPrice(start, end, pricePerMinute).Should().Be(expected);
     }
 
     private readonly List<RentedScooter> _rentalsList = new();
@@ -64,7 +66,7 @@ public class CalculatorsTests
         RentalsMockData();
 
         // Act & Assert
-        Calculations.CalculateRentalIncome(_rentalsList, false).Should().Be(73.8m);
+        _calculations.CalculateRentalIncome(_rentalsList, false).Should().Be(73.8m);
     }
     
     [Fact]
@@ -75,7 +77,7 @@ public class CalculatorsTests
         RentalEndDateMock();
 
         // Act & Assert
-        Calculations.CalculateRentalIncome(_rentalsList, true).Should().Be(134.55m);
+        _calculations.CalculateRentalIncome(_rentalsList, true).Should().Be(134.55m);
     }
 
     [Theory]
@@ -88,7 +90,7 @@ public class CalculatorsTests
         RentalsMockData();
 
         // Act & Assert
-        Calculations.CalculateYearlyRentalIncome(_rentalsList, false, year).Should().Be(expected);
+        _calculations.CalculateYearlyRentalIncome(_rentalsList, false, year).Should().Be(expected);
     }
     
     [Theory]
@@ -102,7 +104,7 @@ public class CalculatorsTests
         RentalEndDateMock();
 
         // Act & Assert
-        Calculations.CalculateYearlyRentalIncome(_rentalsList, false, year).Should().Be(expected);
+        _calculations.CalculateYearlyRentalIncome(_rentalsList, false, year).Should().Be(expected);
     }
 
     [Fact]
@@ -112,7 +114,7 @@ public class CalculatorsTests
         RentalsMockData();
         
         // Act
-        Action act = () => Calculations.CalculateYearlyRentalIncome(_rentalsList, false, 2018);
+        Action act = () => _calculations.CalculateYearlyRentalIncome(_rentalsList, false, 2018);
         
         // Assert
         act.Should()

@@ -1,5 +1,6 @@
 using FluentAssertions;
 using ScooterRental.Exceptions;
+using ScooterRental.Interfaces;
 
 namespace ScooterRental.Tests;
 
@@ -21,15 +22,28 @@ public class RentalCompanyTests
     }
 
     [Fact]
-    public void CreateRental_ValidCompany_CreatesCompany()
+    public void CreateCompany_ValidCompany_CreatesCompany()
     {
         // Act & Assert
         _rentalCompany.Name.Should().Be("BlueScooters");
+    }
+
+    [Theory]
+    [InlineData(null)]
+    [InlineData("")]
+    [InlineData(" ")]
+    public void CreateCompany_InvalidName_ThrowsInvalidNameException(string name)
+    {
+        // Act & Assert
+        FluentActions.Invoking(() => new RentalCompany(name, new ScooterService(_scooterList), _rentalsList))
+            .Should().Throw<InvalidNameException>()
+            .WithMessage("Name cannot be null or empty.");
     }
     
     [Theory]
     [InlineData(null)]
     [InlineData("")]
+    [InlineData(" ")]
     public void StartRent_IdIsNullOrEmpty_ThrowsInvalidIdException(string id)
     {
         // Act & Assert
@@ -77,6 +91,7 @@ public class RentalCompanyTests
     [Theory]
     [InlineData(null)]
     [InlineData("")]
+    [InlineData(" ")]
     public void EndRent_IdIsNullOrEmpty_ThrowsInvalidIdException(string id)
     {
         // Act & Assert

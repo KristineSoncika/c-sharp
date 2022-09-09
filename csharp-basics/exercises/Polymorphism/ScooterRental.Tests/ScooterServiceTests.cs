@@ -1,5 +1,6 @@
 using FluentAssertions;
 using ScooterRental.Exceptions;
+using ScooterRental.Interfaces;
 
 namespace ScooterRental.Tests;
 
@@ -50,6 +51,7 @@ public class ScooterServiceTests
     [Theory]
     [InlineData(null)]
     [InlineData("")]
+    [InlineData(" ")]
     public void AddScooter_IdIsNullOrEmpty_ThrowsInvalidIdException(string id)
     {
         // Act & Assert
@@ -80,6 +82,7 @@ public class ScooterServiceTests
     [Theory]
     [InlineData(null)]
     [InlineData("")]
+    [InlineData(" ")]
     public void RemoveScooter_IdIsNullOrEmpty_ThrowsInvalidIdException(string id)
     {
         // Act & Assert
@@ -140,6 +143,7 @@ public class ScooterServiceTests
     [Theory]
     [InlineData(null)]
     [InlineData("")]
+    [InlineData(" ")]
     public void GetScooterById_IdIsNullOrEmpty_ThrowsInvalidIdException(string id)
     {
         // Act & Assert

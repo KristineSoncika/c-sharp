@@ -1,10 +1,11 @@
 using ScooterRental.Exceptions;
+using ScooterRental.Interfaces;
 
 namespace ScooterRental;
 
-public static class Calculations
+public class Calculations : ICalculations
 {
-    public static decimal CalculateRentalPrice(DateTime start, DateTime end, decimal pricePerMinute)
+    public decimal CalculateRentalPrice(DateTime start, DateTime end, decimal pricePerMinute)
     {
         const decimal maxPricePerDay = 20.0m;
 
@@ -34,7 +35,7 @@ public static class Calculations
         return Math.Round(rentalPrice, 2, MidpointRounding.AwayFromZero);
     }
 
-    public static decimal CalculateRentalIncome(List<RentedScooter> rentals, bool includeNotCompletedRentals)
+    public decimal CalculateRentalIncome(List<RentedScooter> rentals, bool includeNotCompletedRentals)
     {
         decimal sum = 0;
         
@@ -60,7 +61,7 @@ public static class Calculations
         return Math.Round(sum, 2, MidpointRounding.AwayFromZero);
     }
 
-    public static decimal CalculateYearlyRentalIncome(List<RentedScooter> rentals, bool includeNotCompletedRentals, int year)
+    public decimal CalculateYearlyRentalIncome(List<RentedScooter> rentals, bool includeNotCompletedRentals, int year)
     {
         var rentalsInGivenYear = rentals.FindAll(rental => rental.RentalStart.Year == year);
         

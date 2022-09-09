@@ -1,4 +1,6 @@
 using ScooterRental.Exceptions;
+using ScooterRental.Interfaces;
+using ScooterRental.Validations;
 
 namespace ScooterRental;
 
@@ -6,12 +8,16 @@ public class RentalCompany : IRentalCompany
 {
     private readonly ScooterService _scooterService;
     private readonly List<RentedScooter> _rentals;
+    private readonly Calculations _calculations;
 
     public RentalCompany(string name, ScooterService scooterService, List<RentedScooter> rentedScooters)
     {
+        Validator.ValidateName(name);
+        
         Name = name;
         _scooterService = scooterService;
         _rentals = rentedScooters;
+        _calculations = new Calculations();
     }
     
     public string Name { get; }
@@ -45,13 +51,13 @@ public class RentalCompany : IRentalCompany
         var rentedScooter = _rentals.FirstOrDefault(scooter => scooter.Id == id && !scooter.RentalEnd.HasValue);
         rentedScooter.RentalEnd = DateTime.UtcNow;
 
-        return Calculations.CalculateRentalPrice(rentedScooter.RentalStart, (DateTime)rentedScooter.RentalEnd, rentedScooter.PricePerMinute);
+        return _calculations.CalculateRentalPrice(rentedScooter.RentalStart, (DateTime)rentedScooter.RentalEnd, rentedScooter.PricePerMinute);
     }
 
     public decimal CalculateIncome(int? year, bool includeNotCompletedRentals)
     {
         return year == null ?
-            Calculations.CalculateRentalIncome(_rentals, includeNotCompletedRentals) : 
-            Calculations.CalculateYearlyRentalIncome(_rentals, includeNotCompletedRentals, (int)year);
+            _calculations.CalculateRentalIncome(_rentals, includeNotCompletedRentals) : 
+            _calculations.CalculateYearlyRentalIncome(_rentals, includeNotCompletedRentals, (int)year);
     }
 }
