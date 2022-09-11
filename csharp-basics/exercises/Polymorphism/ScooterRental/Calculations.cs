@@ -5,34 +5,39 @@ namespace ScooterRental;
 
 public class Calculations : ICalculations
 {
-    public decimal CalculateRentalPrice(DateTime start, DateTime end, decimal pricePerMinute)
+    private const decimal MaxPricePerDay = 20.0m;
+
+    private static decimal CalculatePriceForPeriodWithinOneDay(DateTime start, DateTime end, decimal pricePerMinute)
     {
-        const decimal maxPricePerDay = 20.0m;
+        var price = (decimal)(end - start).TotalMinutes * pricePerMinute;
+        
+        return price > MaxPricePerDay ? MaxPricePerDay : Math.Round(price, 2, MidpointRounding.AwayFromZero);
+    }
 
-        if (start.Day == end.Day)
-        {
-            if ((decimal)(end - start).TotalMinutes * pricePerMinute > maxPricePerDay)
-            {
-                return maxPricePerDay;
-            }
-
-            return Math.Round((decimal)(end - start).TotalMinutes * pricePerMinute, 2, MidpointRounding.AwayFromZero);
-        }
-
+    private static decimal CalculatePriceForPeriodMoreThanOneDay(DateTime start, DateTime end,
+        decimal pricePerMinute)
+    {
         decimal rentalPrice = 0;
         const int minutesInDay = 1440;
         decimal rentalDays = (end.Date - start.Date).Days - 1;
-
-        var firstDayPrice = (minutesInDay - (decimal)start.TimeOfDay.TotalMinutes) * pricePerMinute;
-        rentalPrice += firstDayPrice > maxPricePerDay ? maxPricePerDay : firstDayPrice;
-
-        var lastDayPrice = (decimal)end.TimeOfDay.TotalMinutes * pricePerMinute;
-        rentalPrice += lastDayPrice > maxPricePerDay ? maxPricePerDay : lastDayPrice;
         
-        var restOfDaysPrice = maxPricePerDay * rentalDays;
+        var firstDayPrice = (minutesInDay - (decimal)start.TimeOfDay.TotalMinutes) * pricePerMinute;
+        rentalPrice += firstDayPrice > MaxPricePerDay ? MaxPricePerDay : firstDayPrice;
+        
+        var lastDayPrice = (decimal)end.TimeOfDay.TotalMinutes * pricePerMinute;
+        rentalPrice += lastDayPrice > MaxPricePerDay ? MaxPricePerDay : lastDayPrice;
+        
+        var restOfDaysPrice = MaxPricePerDay * rentalDays;
         rentalPrice += restOfDaysPrice;
-
+        
         return Math.Round(rentalPrice, 2, MidpointRounding.AwayFromZero);
+    }
+        
+    public decimal CalculateRentalPrice(DateTime start, DateTime end, decimal pricePerMinute)
+    {
+        return start.Day == end.Day ? 
+            CalculatePriceForPeriodWithinOneDay(start, end, pricePerMinute) : 
+            CalculatePriceForPeriodMoreThanOneDay(start, end, pricePerMinute);
     }
 
     public decimal CalculateRentalIncome(List<RentedScooter> rentals, bool includeNotCompletedRentals)
