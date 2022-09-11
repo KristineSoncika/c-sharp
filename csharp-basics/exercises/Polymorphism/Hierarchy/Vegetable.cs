@@ -1,11 +1,11 @@
-﻿using System;
+﻿using Hierarchy.Validations;
 
-namespace Hierarchy
+namespace Hierarchy;
+
+public class Vegetable : Food
 {
-    public class Vegetable : Food
+    public Vegetable(int quantity) : base(quantity)
     {
-        public Vegetable(int quantity) : base(quantity)
-        {
-        }
+        Validator.ValidateQuantity(quantity);
     }
 }

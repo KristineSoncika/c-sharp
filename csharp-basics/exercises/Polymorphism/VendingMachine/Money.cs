@@ -1,30 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Globalization;
+using VendingMachine.Validations;
 
-namespace VendingMachine
+namespace VendingMachine;
+
+public readonly struct Money
 {
-    public struct Money
+    public int Euros { get; }
+    public int Cents { get; }
+
+    public Money(int euros, int cents)
     {
-        public int Euros { get; set; }
-        public int Cents { get; set; }
+        Validator.ValidateEuros(euros);
+        Validator.ValidateCents(cents);
+        
+        Euros = euros;
+        Cents = cents;
+    }
 
-        public Money(int euros, int cents)
-        {
-            Euros = euros;
-            Cents = cents;
-        }
+    public double GetValue()
+    {
+        return Euros + Cents * 0.01;
+    }
 
-        public double GetValue()
-        {
-            return Euros + Cents * 0.01;
-        }
-
-        public override string ToString()
-        {
-            return String.Format("{0:F2}", Euros + Cents * 0.01);
-        }
+    public override string ToString()
+    {
+        return string.Format(CultureInfo.InvariantCulture, "{0:F2}", GetValue());
     }
 }

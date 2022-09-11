@@ -1,11 +1,7 @@
-﻿using System;
+﻿namespace Hierarchy;
 
-namespace Hierarchy
+public abstract class Feline : Mammal
 {
-    public abstract class Feline : Mammal
-    {
-        public Feline(string type, string name, double weight, string region) : base(type, name, weight, region)
-        {
-        }
-    }
+    protected Feline(string type, string name, double weight, string region) : 
+        base(type, name, weight, region) { }
 }
